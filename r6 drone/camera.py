@@ -1,7 +1,7 @@
 #Imports I need for the code
 from machine import pin,UART,PWM
 import time
-from movement import
+from movement import forward,backward,turnleft,turnright
 import cv2
 import os
 import sys
@@ -38,6 +38,16 @@ def video():
                 cv2.putText(frame,"Lock",(20,450),cv2.FONT_HERSHEY_SIMPLEX,2,(0,255,0),3)
 
         #makes it so you can exit the loop
+        if cv2.waitKey(1)==ord('w'):
+            forward()
+        if cv2.waitKey(1)==ord('a'):
+            turnleft()
+        if cv2.waitKey(1)==ord('s'):
+            backward()
+        if cv2.waitKey(1)==ord('d'):
+            turnright()
+        
+        
         if cv2.waitKey(1)==ord("`"):
             break
 
